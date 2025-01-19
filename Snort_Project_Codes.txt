@@ -1,0 +1,43 @@
+
+# Snort IDS/IPS Project Commands and Configuration Codes
+
+## 1. Configure Internal and External Network Variables
+File: /usr/local/etc/snort/snort.lua
+
+# Define trusted internal network
+HOME_NET = '192.168.10.0/24'
+
+# Define untrusted external network (all except HOME_NET)
+EXTERNAL_NET = '!$HOME_NET'
+
+## 2. Include Rules
+# Add the path to the rules file in the ips table
+ips = {
+    include = '/usr/local/etc/rules/community.rules',
+    variables = default_variables
+}
+
+## 3. Enable Logging
+# Configure logging in the Snort configuration file
+alert_fast = {
+    file = true
+}
+
+## 4. Start Snort
+# Run Snort with daemon mode and logging enabled
+sudo snort -c /usr/local/etc/snort/snort.lua -q -D -i enp1s10 -l /var/log/snort -k none
+
+# Explanation of parameters:
+# -c: Specifies the configuration file path
+# -q: Suppresses startup information
+# -D: Runs Snort in daemon mode
+# -i: Defines the network interface to monitor
+# -l: Specifies the log directory
+# -k: Disables checksum verification
+
+## 5. Analyze Logs
+# Search for User-Agent strings in the log file
+grep "User-Agent" /var/log/snort/alert_fast.txt
+
+# Example Output:
+# User-Agent: fortis
