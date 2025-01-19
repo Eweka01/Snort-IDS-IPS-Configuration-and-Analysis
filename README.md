@@ -7,6 +7,8 @@ This report details the configuration, execution, and analysis of a Snort-based 
 
 ## Network Topology
 
+<img width="465" alt="Screenshot 2025-01-18 at 8 09 56 PM" src="https://github.com/user-attachments/assets/0f3efee9-26a4-49e1-b5f8-df6b9e69dcae" />
+
 The network used for this project consisted of the following components:
 
 - **Desktop:** `192.168.6.1` (used for management)
@@ -21,6 +23,8 @@ All network traffic between the desktop and server was routed through the firewa
 
 ## Snort Configuration
 
+<img width="726" alt="Screenshot 2025-01-18 at 8 14 04 PM" src="https://github.com/user-attachments/assets/222485c0-fa25-4666-8d11-d4d1486c23cf" />
+
 ### 1. **Internal and External Network Variables**
 The following steps were taken to configure Snort’s network environment:
 
@@ -33,8 +37,11 @@ The following steps were taken to configure Snort’s network environment:
   ```lua
   EXTERNAL_NET = '!$HOME_NET' -- All traffic except HOME_NET
   ```
+  <img width="607" alt="Screenshot 2025-01-18 at 8 22 08 PM" src="https://github.com/user-attachments/assets/d6ed4c2d-ae81-4633-b830-97ea72232672" />
+
 
 ### 2. **Including Rules**
+
 
 - Configured Snort to use the community rules provided by the system administrator.
 - Added the inclusion path in the `ips` table within the `snort.lua` file:
@@ -46,6 +53,8 @@ The following steps were taken to configure Snort’s network environment:
   ```
 
 ### 3. **Enabling Logging**
+
+<img width="582" alt="Screenshot 2025-01-18 at 8 25 04 PM" src="https://github.com/user-attachments/assets/8855d86f-8514-4ec7-b28a-6fb89e8c981d" />
 
 - Configured Snort to log alerts to a file by modifying the configuration file:
   ```lua
@@ -71,6 +80,8 @@ sudo snort -c /usr/local/etc/snort/snort.lua -q -D -i enp1s10 -l /var/log/snort 
 - **`-i`:** Defines the network interface to monitor.
 - **`-l`:** Specifies the log directory.
 - **`-k`:** Disables checksum verification.
+
+<img width="1647" alt="Screenshot 2025-01-18 at 8 36 26 PM" src="https://github.com/user-attachments/assets/6393cd65-152e-4304-be8b-a853b90e5403" />
 
 ---
 
