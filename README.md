@@ -42,6 +42,7 @@ The following steps were taken to configure Snort’s network environment:
 
 ### 2. **Including Rules**
 
+<img width="582" alt="Screenshot 2025-01-18 at 8 25 04 PM" src="https://github.com/user-attachments/assets/8855d86f-8514-4ec7-b28a-6fb89e8c981d" />
 
 - Configured Snort to use the community rules provided by the system administrator.
 - Added the inclusion path in the `ips` table within the `snort.lua` file:
@@ -53,8 +54,6 @@ The following steps were taken to configure Snort’s network environment:
   ```
 
 ### 3. **Enabling Logging**
-
-<img width="582" alt="Screenshot 2025-01-18 at 8 25 04 PM" src="https://github.com/user-attachments/assets/8855d86f-8514-4ec7-b28a-6fb89e8c981d" />
 
 - Configured Snort to log alerts to a file by modifying the configuration file:
   ```lua
